@@ -11,7 +11,6 @@ export class ExplainComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    alert($('#a1').find('p').css("color",'red'));
 
   }
 
@@ -19,8 +18,5 @@ export class ExplainComponent implements OnInit {
   goback() {
     window.history.go(-1);
   }
-
-  goHome(){
-    this.router.navigate(['settings']);
-  }
+  
 }

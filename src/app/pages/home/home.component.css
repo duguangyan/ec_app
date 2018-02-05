@@ -16,6 +16,9 @@
   display: inline-block;
   width: .26rem;
   height: .26rem;
+  position: relative;
+  left: -5px;
+  top: 2px;
 }
 .home_phone span{
   margin-left: .1rem;
@@ -25,4 +28,21 @@
 .home_phone{
   text-align: center;
   margin-top: .2rem;
+}
+.home-footer{
+  margin-top: .7rem;
+}
+.home-footer a{
+  float: left;
+  text-align: center;
+  width: 33.33%;
+  font-size: .24rem;
+  color: #333;
+}
+.home-footer p{
+  font-size: .16rem;
+}
+.home-footer a img{
+  width: .66rem;
+  height: .66rem;
 }
