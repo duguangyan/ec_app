@@ -1,0 +1,28 @@
+.home img{
+  width: 100%;
+}
+.logo_small {
+  width: 2.5rem;
+  height: 1.3rem;
+  margin: 0 auto;
+  margin-top: .2rem;
+}
+.home_search_btn{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: .3rem;
+}
+.home_phone div{
+  display: inline-block;
+  width: .26rem;
+  height: .26rem;
+}
+.home_phone span{
+  margin-left: .1rem;
+  position: relative;
+  top:-0.02rem;
+}
+.home_phone{
+  text-align: center;
+  margin-top: .2rem;
+}
