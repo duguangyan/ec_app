@@ -85,4 +85,9 @@ export class LoginComponent implements OnInit {
   goRegister(){
     this.router.navigate(['register']);
   }
+
+  //返回上一页
+  goback() {
+    window.history.go(-1);
+  }
 }

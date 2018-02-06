@@ -2,6 +2,8 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {HttpService} from '../../service/http.service';
 import {Cookie} from 'angular2-cookies';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {TotastService} from '../../service/totast.service';
 
 @Component({
   selector: 'app-search',
@@ -33,8 +35,14 @@ export class SearchComponent implements OnInit {
   private imgId3: any;
   constructor(private httpService: HttpService,
               private sanitizer: DomSanitizer,
-              private cd: ChangeDetectorRef) {
-    this.userId = Cookie.load('userId');
+              private cd: ChangeDetectorRef,
+              private router: Router,
+              private totastService: TotastService) {
+    if(!Cookie.load('username')){
+      this.totastService.open('请先登陆',()=>{
+        this.router.navigate(['login']);
+      });
+    }
     this.chooseBtnVal= ['图片找料','上门取样','寄送样品'];
     this.selectVals1 = ['现货','定制'];
     this.isBtnShow = 0;
@@ -54,7 +62,6 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.seVal1);
 
   }
   //第一个下拉框

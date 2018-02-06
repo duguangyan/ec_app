@@ -14,11 +14,11 @@ export class AppComponent implements OnInit{
     public router: Router
   ) { }
   ngOnInit() {
-
-    this.username = Cookie.load("username");
+    this.router.navigate(['home']);
+    /*this.username = Cookie.load("username");
     if(this.username == null){
       this.router.navigate(['login']);
-    }
+    }*/
 
   }
 }

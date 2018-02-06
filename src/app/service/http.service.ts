@@ -13,7 +13,7 @@ export class HttpService {
 
   //是否登录
   isLogin(){
-    if(Cookie.load('username')){
+    if(!Cookie.load('username')){
       this.router.navigate(['login']);
       return false;
     }

@@ -1,5 +1,5 @@
 <div class="header">
-  <h5>搜索</h5>
+  <h5>小鹿找料</h5>
 </div>
 <div class="search">
   <p class="title">请填写物料信息</p>
@@ -20,13 +20,13 @@
   </div>
   <div class="price">
     <span><strong class="red">*</strong>价格范围:</span>
-    <input type="number" [(ngModel)]="minPrice" placeholder="请输入" onfocus="this.placeholder=''" onblur="this.placeholder='请输入'">
-    -
-    <input type="number" [(ngModel)]="maxPrice" placeholder="请输入" onfocus="this.placeholder=''" onblur="this.placeholder='请输入'">
+    <input type="number" [(ngModel)]="minPrice" placeholder="请输入">
+    <i>-</i>
+    <input type="number" [(ngModel)]="maxPrice" placeholder="请输入">元
   </div>
   <div class="describe">
     <span><strong class="red">*</strong>描述:</span>
-    <textarea name="" maxlength="300" [(ngModel)]="fieldDesc"  placeholder="(注：请详细描述物料的名称、用途、材质)" cols="30" rows="10"  onfocus="this.placeholder=''" onblur="this.placeholder='(注：请详细描述物料的名称、用途、材质)'"></textarea>
+    <textarea name="" maxlength="300" [(ngModel)]="fieldDesc"  placeholder="(注：请详细描述物料的名称、用途、材质)" cols="30" rows="10"></textarea>
   </div>
 
   <div class="choose">

@@ -31,4 +31,37 @@ export class TotastService {
     });
   }
 
+  confirm(msg,fun){
+    layer.open({
+      title: [
+        msg,
+        'background-color:#8DCE16; color:#fff;'
+      ]
+      ,anim: 'up'
+      ,content: '展现的是全部结构'
+      ,btn: ['确认', '取消']
+      ,yes:function(index){
+
+        layer.close(index);
+        fun();
+      }
+    });
+  }
+
+  open(msg,fun){
+    layer.open({
+      title: [
+        '',
+        'background-color:#8DCE16; color:#fff; display:none'
+      ]
+      ,anim: 'up'
+      ,content: msg
+      ,btn: ['确认']
+      ,yes:function(index){
+        layer.close(index);
+        fun();
+      }
+    });
+  }
+
 }
