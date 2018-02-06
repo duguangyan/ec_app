@@ -9,14 +9,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent implements OnInit {
-  private isSends: boolean = true;
-  private sends: any;
-  private phone: string;
-  private code: string;
-  private passWordVal: null;
-  private codeId: any;
-  private setIntervalTimer: any;
-  private isShowPassword:boolean = true;
+  public isSends: boolean = true;
+  public sends: any;
+  public phone: string;
+  public code: string;
+  public passWordVal: null;
+  public codeId: any;
+  public setIntervalTimer: any;
+  public isShowPassword:boolean = true;
   constructor(public totastService: TotastService,
               public httpService: HttpService,
               public cd: ChangeDetectorRef,
@@ -106,7 +106,7 @@ export class ForgetPasswordComponent implements OnInit {
       sms_id:this.codeId,
       code:this.code
     }
-    this.httpService.post('/auth/member/psw/update',{params}).subscribe((res:any)=>{
+    this.httpService.post('/auth/member/psw/update',params).subscribe((res:any)=>{
       if(res.code>=0){
         this.totastService.success('重新设置成功');
         this.router.navigate(['login']);

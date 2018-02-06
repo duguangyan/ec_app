@@ -12,10 +12,10 @@ import {TotastService} from '../../service/totast.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private activatedRoute: ActivatedRoute,   //这里需要注入ActivatedRoute模块
-    private router: Router,
-    private httpService: HttpService,
-    private totastService: TotastService
+    public activatedRoute: ActivatedRoute,   //这里需要注入ActivatedRoute模块
+    public router: Router,
+    public httpService: HttpService,
+    public totastService: TotastService
   ) {
     /*activatedRoute.queryParams.subscribe(queryParams => {
       let productId = queryParams.productId;
@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
       this.totastService.open('请先登陆',()=>{
         this.router.navigate(['login']);
       });
+    }else{
+      this.router.navigate(['search']);
     }
   }
 }

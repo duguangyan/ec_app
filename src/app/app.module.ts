@@ -19,6 +19,12 @@ import {TotastService} from './service/totast.service';
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { RegisterComponent } from './login/register/register.component';
 import { ProtocolComponent } from './login/register/protocol/protocol.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PayDoingComponent } from './payment/pay-doing/pay-doing.component';
+import { PaySuccessComponent } from './payment/pay-success/pay-success.component';
+import { OrderListDetailComponent } from './pages/settings/order-list-detail/order-list-detail.component';
+import { OrderListComponent } from './pages/settings/order-list/order-list.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +38,11 @@ import { ProtocolComponent } from './login/register/protocol/protocol.component'
     ForgetPasswordComponent,
     RegisterComponent,
     ProtocolComponent,
+    PaymentComponent,
+    PayDoingComponent,
+    PaySuccessComponent,
+    OrderListDetailComponent,
+    OrderListComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +53,8 @@ import { ProtocolComponent } from './login/register/protocol/protocol.component'
   ],
   providers: [
     HttpService,
-    TotastService
+    TotastService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy, }
   ],
   bootstrap: [AppComponent],
 })

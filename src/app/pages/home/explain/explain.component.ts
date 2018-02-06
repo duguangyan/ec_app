@@ -8,7 +8,7 @@ declare var $:any;
 })
 export class ExplainComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
 
@@ -18,5 +18,5 @@ export class ExplainComponent implements OnInit {
   goback() {
     window.history.go(-1);
   }
-  
+
 }

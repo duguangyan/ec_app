@@ -1,6 +1,7 @@
 <div class="header">
   <h5>小鹿找料</h5>
 </div>
+<div class="content">
 <div class="search">
   <p class="title">请填写物料信息</p>
   <div class="select1">
@@ -48,14 +49,14 @@
         <input class="change" (change)="onChangeSelectFile($event,2)" type="file" enctype="multipart/form-data"  />
         <img [src]="imageUrl2">
         <span *ngIf="loading2">图片上传中... </span>
-        <p>正面</p>
+        <p>侧面</p>
         <p>添加图片</p>
       </a>
       <a>
         <input class="change" (change)="onChangeSelectFile($event,3)" type="file" enctype="multipart/form-data"  />
         <img [src]="imageUrl3">
         <span *ngIf="loading3">图片上传中... </span>
-        <p>正面</p>
+        <p>侧面</p>
         <p>添加图片</p>
       </a>
 
@@ -76,6 +77,7 @@
   <div class="submit" (click)="goPayment(isBtnShow+1)">
     <p class="btn">确认提交</p>
   </div>
+</div>
 </div>
 <app-footer></app-footer>
 

@@ -8,6 +8,11 @@ import {ExplainComponent} from '../app/pages/home/explain/explain.component';
 import {ForgetPasswordComponent} from '../app/login/forget-password/forget-password.component';
 import {RegisterComponent} from '../app/login/register/register.component';
 import {ProtocolComponent} from '../app/login/register/protocol/protocol.component';
+import {PaymentComponent} from '../app/payment/payment.component';
+import {PayDoingComponent} from '../app/payment/pay-doing/pay-doing.component';
+import {PaySuccessComponent} from '../app/payment/pay-success/pay-success.component';
+import {OrderListDetailComponent} from '../app/pages/settings/order-list-detail/order-list-detail.component';
+import {OrderListComponent} from '../app/pages/settings/order-list/order-list.component';
 
 export const ROUTES: Routes = [
   {
@@ -27,14 +32,44 @@ export const ROUTES: Routes = [
     component: ProtocolComponent,
   },
   {
+    path: 'payment',
+    component: PaymentComponent,
+  },
+  {
+    path: 'paydo',
+    component: PayDoingComponent,
+  },
+  {
+    path: 'paysuccess',
+    component: PaySuccessComponent,
+  },
+  {
+    path: 'orderlistdetail',
+    component: OrderListDetailComponent,
+  },
+  {
+    path: 'orderlist',
+    component: OrderListComponent,
+  },
+  {
     path: '',
     component: MainComponent,
-    children: [
-      { path: 'home', component: HomeComponent },
-      { path: 'home-explain', component: ExplainComponent },
-      { path: 'search', component: SearchComponent },
-      { path: 'settings', component: SettingsComponent }
-    ]
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'home-explain',
+    component: ExplainComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
   }
 
 ];

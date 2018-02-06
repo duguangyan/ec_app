@@ -15,11 +15,11 @@ declare var layer:any;
 
 
 export class LoginComponent implements OnInit {
-  private isPwShow: boolean;
-  private phone: string;
-  private msg: string;
-  private totastSelect: number;
-  private passWord: any;
+  public isPwShow: boolean;
+  public phone: string;
+  public msg: string;
+  public totastSelect: number;
+  public passWord: any;
   constructor(public router:Router,
               public httpService: HttpService,
               public totastService: TotastService) {
@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    Cookie.save('username','duguangyan');
-
     if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.phone))){
       this.totastService.waring('请输入有效电话号码');
       return false;
@@ -68,8 +66,9 @@ export class LoginComponent implements OnInit {
     this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
       if(res.code>=0){
         Cookie.save('userId',res.data.id);
+        Cookie.save('username',res.data.user_name);
         this.totastService.success('请求成功');
-        this.router.navigate(['']);
+        window.history.go(-1);
       }else{
         this.totastService.error('请求失败');
       }

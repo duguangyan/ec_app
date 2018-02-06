@@ -66,6 +66,8 @@ html{
 }
 .content{
   margin-top: .8rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
 }
 .toast{
   width: 60%;

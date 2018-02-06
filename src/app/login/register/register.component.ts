@@ -9,15 +9,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private isSends:boolean = true;
-  private isPassWordShow: boolean = true;
-  private isAgree: boolean = false;
-  private phone: string;
-  private code: string;
-  private passWord: string;
-  private codeFormService: any;
-  private sends: number = 60;
-  private setIntervalTimer:any;
+  public isSends:boolean = true;
+  public isPassWordShow: boolean = true;
+  public isAgree: boolean = false;
+  public phone: string;
+  public code: string;
+  public passWord: string;
+  public codeFormService: any;
+  public sends: number = 60;
+  public setIntervalTimer:any;
   constructor(public totastService: TotastService,
               public httpService: HttpService,
               public router: Router) { }
