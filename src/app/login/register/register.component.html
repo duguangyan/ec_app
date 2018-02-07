@@ -8,18 +8,18 @@
   <div class="from">
     <div><input type="text" [(ngModel)]="phone" placeholder="请输入你的手机号"></div>
     <div>
-      <input type="password" [(ngModel)]="code" placeholder="输入验证码">
+      <input type="text" [(ngModel)]="code" placeholder="输入验证码">
       <a class="reg-a1 btn" *ngIf="isSends" href="javascript:void(0)" (click)="getMsgCode()">获取验证码</a>
       <a class="reg-a2 btn" *ngIf="!isSends" href="javascript:void(0)">倒数{{sends}}秒</a>
     </div>
     <div class="forget-3-2" *ngIf="isPassWordShow">
-      <input type="password" [(ngModel)]="passWord" placeholder="请设置您的新密码(6-20个字符之间)">
+      <input type="password" [(ngModel)]="passWord" placeholder="请设置您的密码(6-20个字符之间)">
       <div (click)="passWordShow()">
         <img src="../../../assets/imgs/close_password.png">
       </div>
     </div>
     <div class="forget-3-1" *ngIf="!isPassWordShow">
-      <input type="text" [(ngModel)]="passWord" placeholder="请设置您的新密码(6-20个字符之间)">
+      <input type="text" [(ngModel)]="passWord" placeholder="请设置您的密码(6-20个字符之间)">
       <div (click)="passWordShow()">
         <img src="../../../assets/imgs/open_password.png">
       </div>

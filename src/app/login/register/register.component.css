@@ -56,6 +56,7 @@
   text-align: right;
   margin-right: .2rem;
   margin-top: .2rem;
+  text-align: center;
 }
 .formRight span{
   color: #d5393c;
@@ -66,7 +67,7 @@
   position: absolute;
   /* top: 0; */
   /* left: 0; */
-  right: 3.7rem;
+  left: 1rem;
   border: none !important;
   top: .05rem;
 }
