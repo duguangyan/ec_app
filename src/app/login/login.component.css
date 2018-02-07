@@ -1,6 +1,8 @@
 .logo{
   text-align: center;
-  padding: .4rem;
+}
+.logo img{
+  width: 3rem;
 }
 .username,.password{
   height: 1rem;
@@ -9,8 +11,7 @@
   border-bottom: 1px solid #e2e2e2;
 }
 .username >img ,.password >img{
-  width: .64rem;
-  height: .64rem;
+  width: .4rem;
   position: relative;
   left: .4rem;
   top: .2rem;
@@ -45,15 +46,16 @@
   right: 0;
 }
 .submit{
-  width: 90%;
-  height: 50px;
-  background-color:#d5393c;
+  width: 80%;
+  height: .8rem;
+  background-color: #d5393c;
   border: none;
-  border-radius:5px ;
+  border-radius: 5px;
   color: #fff;
   margin-top: 14px;
-  margin-left: 5%;
+  margin-left: 10%;
   font-size: 18px;
+  -webkit-box-shadow: 0px 1px 2px 0px #999;
   box-shadow: 0px 1px 2px 0px #999;
 }
 .forgetPassword{
@@ -65,12 +67,11 @@
 }
 .wxLogin{
   text-align: center;
-  margin-top: .5rem;
+  margin-top: .2rem;
 }
 .wxLogin img{
-  width: 1.3rem;
-  height: 1.3rem;
-  margin: .5rem 0;
+  width: 1rem;
+  margin: .2rem 0;
 }
 .wxLogin p{
   color: #666;

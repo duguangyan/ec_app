@@ -14,7 +14,54 @@ select{
 }
 .select1,.select2{
   font-size: .24rem;
-  margin-top: .4rem;
+  margin-top: .3rem;
+  position: relative;
+}
+.select1 select,.select2 select{
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding-left: .1rem;
+  height: .45rem;
+  border: 1px solid #999;
+}
+
+.select1 :before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: .15rem;
+  right: .4rem;
+  width: 0px;
+  height: 0;
+  border-width: .1rem .1rem;
+  border-style: solid dashed dashed dashed;
+  border-color: #000 #ffffff #ffffff #ffffff;
+}
+
+.select2 :before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: .25rem;
+  right: 2.7rem;
+  width: 0px;
+  height: 0;
+  border-width: .1rem .1rem;
+  border-style: solid dashed dashed dashed;
+  border-color: #000 #ffffff #ffffff #ffffff;
+}
+.select2 :after{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: .25rem;
+  right: .4rem;
+  width: 0px;
+  height: 0;
+  border-width: .1rem .1rem;
+  border-style: solid dashed dashed dashed;
+  border-color: #000 #ffffff #ffffff #ffffff;
 }
 .select1{
   margin-top: 0;
@@ -27,7 +74,6 @@ select{
   border-radius:5px;
   outline:none;
   font-size: .24rem;
-  height: .4rem;
 }
 .select2 select{
   width: 2.2rem;
@@ -36,7 +82,6 @@ select{
   outline: none;
   font-size: .24rem;
   margin-right: 0.04rem;
-  height: .4rem;
 }
 .price{
   margin-top: .4rem;
@@ -122,7 +167,7 @@ select{
 
 
 .footerNavs{
-  margin-top: .2rem;
+  margin-top: .4rem;
   text-align: center;
   height: 2rem;
 }

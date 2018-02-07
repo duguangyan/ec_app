@@ -19,6 +19,11 @@
   position: relative;
   top: .04rem;
 }
+.settings-more strong img{
+  width: .2rem;
+  position: relative;
+  top: .1rem;
+}
 .settings-more span{
   font-size: .3rem;
   margin-left: .1rem;

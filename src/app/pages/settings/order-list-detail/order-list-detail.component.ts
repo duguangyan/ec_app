@@ -13,7 +13,7 @@ export class OrderListDetailComponent implements OnInit {
   public queryParams: any;
   public id: any;
   public data: any = {};
-
+  public imgUrl: any = '../../../assets/imgs/kbg.png';
   constructor(public activatedRoute: ActivatedRoute,
               public httpService: HttpService,
               public router: Router,
@@ -52,7 +52,12 @@ export class OrderListDetailComponent implements OnInit {
   }
 
   goPayment() {
-    this.router.navigate(['paydo'],{ queryParams : {id:this.data.id}});
-  }
+    if(this.data){
+      this.queryParams = this.data;
+      this.router.navigate(['paydo'],{ queryParams : this.queryParams});
+    }else{
+      this.totastService.waring('网络慢，请稍后再试！');
+    }
 
+  }
 }

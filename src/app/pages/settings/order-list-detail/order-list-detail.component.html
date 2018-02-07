@@ -26,19 +26,19 @@
           <li>
             <p>正面</p>
             <div>
-              <img [src]="data.img1_url || urlImg">
+              <img [src]="data.img1_url == null?imgUrl:data.img1_url">
             </div>
           </li>
           <li>
             <p>侧面</p>
             <div>
-              <img [src]="data.img2_url || urlImg">
+              <img [src]="data.img2_url == null?imgUrl:data.img2_url">
             </div>
           </li>
           <li>
             <p>背面</p>
             <div>
-              <img [src]="data.img3_url || urlImg">
+              <img [src]="data.img3_url == null?imgUrl:data.img3_url">
             </div>
           </li>
           <div style="clear: both"></div>

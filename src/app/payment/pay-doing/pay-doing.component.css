@@ -43,3 +43,9 @@
   top: -0.05rem;
   margin-left: .1rem;
 }
+.paydo div span{
+  font-size: .24rem;
+}
+.paydo div span img{
+  width: .24rem;
+}

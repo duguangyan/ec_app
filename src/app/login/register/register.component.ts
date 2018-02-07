@@ -42,36 +42,37 @@ export class RegisterComponent implements OnInit {
   //获取验证码
   getMsgCode(){
     if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.phone)) && this.phone!==''){
-
       this.totastService.waring('请输入正确的手机号');
       return false;
-    } else {
-      const codeParams = {
-        user_name:this.phone,
-        token:''
-      }
-      this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
-        if( res.code<0){
-          this.isNumber = true;
-          const params = {
-            user_name:this.phone
-          }
-          this.httpService.get('/auth/member/register/sms',params).subscribe(( ress: any)=>{
-            if( ress.code >=0){
-              this.totastService.success('短信发送成功');
-              this.codeFormService = ress.data;
-              this.sendsFn();
-              console.log(ress.data);
-            }
-          })
-        } else{
-          this.totastService.error('你注册的手机号已存在！');
-        }
-      },(error)=>{
-        console.log(error);
-        this.totastService.error('网络超时，请稍后！');
-      })
     }
+    const codeParams = {
+      user_name:this.phone,
+      token:''
+    }
+    this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
+      if( res.code<0){
+        this.isNumber = true;
+        const params = {
+          phone:this.phone
+        }
+        this.httpService.get('/auth/member/register/sms?phone='+ this.phone,params).subscribe(( ress: any)=>{
+          if( ress.code >=0){
+            this.totastService.success('短信发送成功');
+            this.codeFormService = ress.data;
+            this.sendsFn();
+            console.log(ress.data);
+          }else{
+            this.totastService.waring('网络忙，请稍后再试！');
+          }
+        })
+      } else{
+        this.totastService.error('你注册的手机号已存在！');
+      }
+    },(error)=>{
+      console.log(error);
+      this.totastService.error('网络超时，请稍后！');
+    })
+
   }
 
   // 注册
@@ -112,6 +113,9 @@ export class RegisterComponent implements OnInit {
       }else{
         this.totastService.error('注册失败,请稍后再试');
       }
+    },(error)=>{
+      console.log(error);
+      this.totastService.error('注册失败,请稍后再试');
     })
   }
 

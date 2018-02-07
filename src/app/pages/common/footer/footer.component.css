@@ -38,8 +38,13 @@
 .footer .main-active p{
   color: #d5393c;
 }
+.footer div img:nth-child(1){
+  display: none;
+}
+.footer .main-active div img:nth-child(1){
+  display: block;
+}
 .footer .main-active div img:nth-child(2){
   display: none;
 }
-
 
