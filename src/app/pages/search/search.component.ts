@@ -42,15 +42,14 @@ export class SearchComponent implements OnInit {
   public samplingLinkman: string;
   public samplingNumber: string;
   public samplingAddress: any;
+  public isLogin: boolean = false;
   constructor(public httpService: HttpService,
               public sanitizer: DomSanitizer,
               public cd: ChangeDetectorRef,
               public router: Router,
               public totastService: TotastService,) {
     if(!Cookie.load('username')){
-      this.totastService.open('请先登陆',()=>{
-        this.router.navigate(['login']);
-      });
+      this.isLogin = true;
     }else{
       this.userId = Cookie.load('userId');
     }
@@ -137,7 +136,7 @@ export class SearchComponent implements OnInit {
             this.loading2 = false;
           }else{
             this.loading2 = false;
-           this.totastService.waring("网络慢，请稍等！");
+            this.totastService.waring("网络慢，请稍等！");
           }
         },(error)=>{
           this.loading2 = false;
@@ -190,7 +189,7 @@ export class SearchComponent implements OnInit {
         this.selectVals2 = res.data;
         this.seVal2 = res.data[0].name;
         // 获取selectVals3的数据
-        this.getSelectVal(this.selectVals2[0].id).subscribe((res:any)=>{
+        this.getSelectVal(this.selectVals2[0].id).subscribe(( res:any)=>{
           if(res.code>=0){
             this.selectVals3 = res.data;
             this.seVal3 = res.data[0].name;
@@ -331,4 +330,9 @@ export class SearchComponent implements OnInit {
         }
   }
 
+  //是否登录
+  toLogin(){
+    this.isLogin = false;
+    this.router.navigate(['login']);
+  }
 }

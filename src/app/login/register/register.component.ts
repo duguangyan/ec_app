@@ -49,13 +49,13 @@ export class RegisterComponent implements OnInit {
         user_name:this.phone,
         token:''
       }
-      this.httpService.post('/auth/member/exist',codeParams).subscribe((res:any)=>{
-        if(res.code<0){
+      this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
+        if( res.code<0){
           const params = {
             user_name:this.phone
           }
-          this.httpService.get('/auth/member/register/sms',params).subscribe((res:any)=>{
-            if(res.code >=0){
+          this.httpService.get('/auth/member/register/sms',params).subscribe(( res: any)=>{
+            if( res.code >=0){
               this.totastService.success('短信发送成功');
               this.codeFormService = res.data;
               this.sendsFn();
@@ -66,6 +66,7 @@ export class RegisterComponent implements OnInit {
           this.totastService.error('你注册的手机号已存在！');
         }
       },(error)=>{
+        console.log(error);
         this.totastService.error('网络超时，请稍后！');
       })
     }
@@ -108,7 +109,6 @@ export class RegisterComponent implements OnInit {
       }
     })
   }
-
 
   // 60秒
   sendsFn() {

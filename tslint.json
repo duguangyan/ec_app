@@ -1,5 +1,4 @@
-{
-  "extends": "tslint:recommended",
+{"extends": "tslint:recommended",
   "rules": {
     "comment-format": [
       false,
@@ -37,6 +36,6 @@
     "max-classes-per-file": [false]
   },
   "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
+    "node_modules/codelyzer"
   ]
 }

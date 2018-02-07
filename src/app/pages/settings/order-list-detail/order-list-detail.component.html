@@ -7,7 +7,7 @@
     <div class="form">
       <p>货源类型:  <span> {{data.source_type_name}}</span></p>
       <p>物料类型:  <span>{{data.cname}}</span></p>
-      <p>价格范围:  <span> {{data.min_price |  number:'1.2-2'}}</span> - <span>{{data.max_price |  number:'1.2-2'}}</span>元</p>
+      <p>价格范围:  <span> {{data.min_price |  number:'1.2-2'}}</span> - <span style="margin-left: 0">{{data.max_price |  number:'1.2-2'}}</span>元</p>
       <p>订单日期:  <span>{{data.created_at}}</span></p>
     </div>
     <div class="describe">

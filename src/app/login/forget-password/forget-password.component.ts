@@ -49,9 +49,9 @@ export class ForgetPasswordComponent implements OnInit {
       phone:this.phone,
       token:''
     }
-    this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams).subscribe((res:any)=>{
+    this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams).subscribe(( res: any)=>{
       if(res.code>=0){
-        this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams).subscribe((res:any)=>{
+        this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams).subscribe(( res: any)=>{
           if(res.code >=0){
             this.totastService.success('短信发送成功');
             this.codeId = res.data;

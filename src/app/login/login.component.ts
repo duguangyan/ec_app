@@ -1,24 +1,18 @@
-///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
+
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Cookie} from 'angular2-cookies';
 import {HttpService} from '../service/http.service';
 import {TotastService} from '../service/totast.service';
-import {RegisterComponent} from './register/register.component';
-declare var layer:any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 
-
-
 export class LoginComponent implements OnInit {
   public isPwShow: boolean;
   public phone: string;
-  public msg: string;
-  public totastSelect: number;
   public passWord: any;
   constructor(public router:Router,
               public httpService: HttpService,
@@ -68,7 +62,7 @@ export class LoginComponent implements OnInit {
         Cookie.save('userId',res.data.id);
         Cookie.save('username',res.data.user_name);
         this.totastService.success('请求成功');
-        window.history.go(-1);
+        this.router.navigate(['settings']);
       }else{
         this.totastService.error('请求失败');
       }

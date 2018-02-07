@@ -11,6 +11,7 @@ import {TotastService} from '../../service/totast.service';
 })
 export class HomeComponent implements OnInit {
 
+  public isLogin: boolean = false;
   constructor(
     public activatedRoute: ActivatedRoute,   //这里需要注入ActivatedRoute模块
     public router: Router,
@@ -30,11 +31,14 @@ export class HomeComponent implements OnInit {
 
   search() {
     if(!Cookie.load('username')){
-      this.totastService.open('请先登陆',()=>{
-        this.router.navigate(['login']);
-      });
+      this.isLogin = true;
     }else{
       this.router.navigate(['search']);
     }
+  }
+
+  toLogin(){
+    this.isLogin = false;
+    this.router.navigate(['login']);
   }
 }

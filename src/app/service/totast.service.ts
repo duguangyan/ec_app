@@ -40,8 +40,7 @@ export class TotastService {
       ,anim: 'up'
       ,content: '展现的是全部结构'
       ,btn: ['确认', '取消']
-      ,yes:function(index){
-
+      ,yes:(index) => {
         layer.close(index);
         fun();
       }
@@ -57,11 +56,10 @@ export class TotastService {
       ,anim: 'up'
       ,content: msg
       ,btn: ['确认']
-      ,yes:function(index){
+      ,yes:(index)=>{
         layer.close(index);
         fun();
       }
     });
   }
-
 }

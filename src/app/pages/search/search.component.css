@@ -14,6 +14,10 @@ select{
 }
 .select1,.select2{
   font-size: .24rem;
+  margin-top: .4rem;
+}
+.select1{
+  margin-top: 0;
 }
 .select1 span,.select2 span{
   margin-right: .05rem;
@@ -23,9 +27,7 @@ select{
   border-radius:5px;
   outline:none;
   font-size: .24rem;
-}
-.select2{
-  margin-top: .1rem;
+  height: .4rem;
 }
 .select2 select{
   width: 2.2rem;
@@ -34,9 +36,10 @@ select{
   outline: none;
   font-size: .24rem;
   margin-right: 0.04rem;
+  height: .4rem;
 }
 .price{
-  margin-top: .2rem;
+  margin-top: .4rem;
   font-size: .24rem;
   position: relative;
 }
@@ -46,6 +49,7 @@ select{
 
 .price input{
   width: 1.8rem;
+  height: .4rem;
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #999;
@@ -65,7 +69,7 @@ select{
 }
 .describe{
   font-size: .24rem;
-  margin-top: .25rem;
+  margin-top: .4rem;
 }
 .describe span{
   margin-right: .1rem;
@@ -92,10 +96,11 @@ select{
 .choose h5{
   font-size: .24rem;
   text-align: center;
+  margin-bottom: .2rem;
 }
 .choose a{
   width: 25%;
-  font-size: .18rem;
+  font-size: .24rem;
 }
 .active{
   background-color: #d5393c!important;
@@ -132,6 +137,7 @@ select{
   z-index: 9999;
   position: absolute;
   margin-left: 0;
+  padding: 0;
 }
 .nav1 a {
   display: block;
@@ -167,7 +173,7 @@ select{
   margin-top: .4rem;
 }
 .nav2{
-  margin-left: 1rem;
+
 }
 .nav2 p{
   text-align: left;
@@ -180,10 +186,10 @@ select{
 .nav2 input{
   background-color: #fff;
   border: 1px solid #999;
-  width: 2.5rem;
+  width: 4.3rem;
   height: .4rem;
   border-radius: 5px;
-  font-size: .18rem;
+  font-size: .24rem;
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
@@ -205,3 +211,4 @@ select{
 .submit p {
   width: 2.5rem;
 }
+

@@ -4,7 +4,7 @@
   font-size: .3rem;
   color: #333;
   font-weight: 600;
-  padding: .2rem 0;
+  padding: .1rem 0;
 }
 .detail .form {
   border-top: 10px solid #efeff4;
@@ -18,14 +18,18 @@
 .detail span{
   margin-left: .2rem;
 }
-
+.detail h5{
+  font-size: .24rem !important;
+}
 .describe {
   margin-bottom: .4rem;
+
 }
 .describe h5{
   text-align: center;
   font-size: .24rem;
   color: #333;
+  line-height: .6rem;
 }
 .describe div{
   width: 60%;

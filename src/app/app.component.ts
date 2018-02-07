@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Cookie} from 'angular2-cookies';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,13 +14,5 @@ export class AppComponent implements OnInit{
   ) { }
   ngOnInit() {
     this.router.navigate(['home']);
-    /*this.username = Cookie.load("username");
-    if(this.username == null){
-      this.router.navigate(['login']);
-    }*/
-
   }
 }
-
-
-

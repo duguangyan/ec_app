@@ -45,9 +45,6 @@ export class OrderListDetailComponent implements OnInit {
 
   ngOnInit() {
 
-
-
-
   }
   //返回上一页
   goback(){

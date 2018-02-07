@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Cookie} from 'angular2-cookies';
 import {HttpService} from '../../service/http.service';
 import {Router} from '@angular/router';
-declare var $: any;
-declare var layer: any;
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -70,4 +68,5 @@ export class SettingsComponent implements OnInit {
   login() {
     this.router.navigate(['login']);
   }
+
 }
