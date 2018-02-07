@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
   ngAfterContentInit(){
     setTimeout(()=>{
       this.select = this.select - 1;
-      $(".footer a").eq( parseInt(this.select)).addClass('main-active');
+      $(".footer a").eq(this.select).addClass('main-active');
     },1)
   }
 }

@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   public codeFormService: any;
   public sends: number = 60;
   public setIntervalTimer:any;
+  private isNumber: boolean = false;
   constructor(public totastService: TotastService,
               public httpService: HttpService,
               public router: Router) { }
@@ -51,15 +52,16 @@ export class RegisterComponent implements OnInit {
       }
       this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
         if( res.code<0){
+          this.isNumber = true;
           const params = {
             user_name:this.phone
           }
-          this.httpService.get('/auth/member/register/sms',params).subscribe(( res: any)=>{
-            if( res.code >=0){
+          this.httpService.get('/auth/member/register/sms',params).subscribe(( ress: any)=>{
+            if( ress.code >=0){
               this.totastService.success('短信发送成功');
-              this.codeFormService = res.data;
+              this.codeFormService = ress.data;
               this.sendsFn();
-              console.log(res.data);
+              console.log(ress.data);
             }
           })
         } else{
@@ -75,8 +77,11 @@ export class RegisterComponent implements OnInit {
   // 注册
   register() {
     if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.phone)) && this.phone!==''){
-
       this.totastService.waring('请输入正确的手机号');
+      return false;
+    }
+    if(!this.isNumber){
+      this.totastService.waring('请输入的手机号已注册');
       return false;
     }
     if(this.isAgree){

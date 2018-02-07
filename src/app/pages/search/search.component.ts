@@ -189,10 +189,10 @@ export class SearchComponent implements OnInit {
         this.selectVals2 = res.data;
         this.seVal2 = res.data[0].name;
         // 获取selectVals3的数据
-        this.getSelectVal(this.selectVals2[0].id).subscribe(( res:any)=>{
-          if(res.code>=0){
-            this.selectVals3 = res.data;
-            this.seVal3 = res.data[0].name;
+        this.getSelectVal(this.selectVals2[0].id).subscribe(( ress:any)=>{
+          if(ress.code>=0){
+            this.selectVals3 = ress.data;
+            this.seVal3 = ress.data[0].name;
             this.selectNumberTodo();
           }
         })
