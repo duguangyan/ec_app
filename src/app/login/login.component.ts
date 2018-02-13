@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Cookie} from 'angular2-cookies';
 import {HttpService} from '../service/http.service';
 import {TotastService} from '../service/totast.service';
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,11 +17,13 @@ export class LoginComponent implements OnInit {
   public passWord: any;
   constructor(public router:Router,
               public httpService: HttpService,
-              public totastService: TotastService) {
+              public totastService: TotastService,
+              public http: HttpClient) {
     this.isPwShow = true;
   }
 
   ngOnInit() {
+
 
   }
 
