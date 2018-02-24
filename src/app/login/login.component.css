@@ -4,10 +4,15 @@
 .logo img{
   width: 3rem;
 }
-.username,.password{
+.username{
   height: 1rem;
   line-height: 1rem;
   border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+}
+.password{
+  height: 1rem;
+  line-height: 1rem;
   border-bottom: 1px solid #e2e2e2;
 }
 .username >img ,.password >img{
@@ -64,6 +69,7 @@
   float: right;
   font-size: .24rem;
   margin-top: .2rem;
+  text-decoration: underline;
 }
 .wxLogin{
   text-align: center;

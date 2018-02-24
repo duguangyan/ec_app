@@ -1,5 +1,9 @@
 .logo img{
-  width: 100%;
+  width: 3rem;
+  position: relative;
+  left: 50%;
+  margin-left: -1.5rem;
+  margin-top: 1rem;
 }
 .payment-content img{
   width: .2rem;

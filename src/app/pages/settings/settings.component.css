@@ -45,7 +45,7 @@
 .lists ul li span{
   display: inline-block;
   float: left;
-  font-size: .18rem;
+  font-size: .24rem;
   padding-right: .2rem;
   text-overflow : ellipsis;
   white-space : nowrap;
@@ -57,11 +57,11 @@
 
 }
 .lists ul li span:nth-child(2){
-  width: 24%;
+  width: 22%;
   padding-right: 1%;
 }
 .lists ul li span:nth-child(3){
-  width: 12%;
+  width: 14%;
   position: relative;
   right: -.3rem;
 }
