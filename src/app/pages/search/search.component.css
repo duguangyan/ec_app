@@ -226,20 +226,20 @@ select{
   margin-top: .2rem;
 }
 .nav2 span{
-  padding-right: .2rem;
+  padding-right: .05rem;
   font-size: .28rem;
 }
 .nav2 input{
   background-color: #fff;
   border: 1px solid #999;
-  width: 4.1rem;
+  width: 4.17rem;
   height: .6rem;
   border-radius: 5px;
   font-size: .28rem;
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
-  margin-left: 0;
+  margin-left: .1rem;
 }
 .nav3 p{
   text-align: center;
