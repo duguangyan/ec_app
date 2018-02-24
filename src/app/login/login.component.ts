@@ -61,8 +61,8 @@ export class LoginComponent implements OnInit {
     }
     this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
       if(res.code>=0){
-        Cookie.save('userId',res.data.id);
-        Cookie.save('username',res.data.user_name);
+        Cookie.save('userId',res.data.id,7);
+        Cookie.save('username',res.data.user_name,7);
         this.totastService.success('请求成功');
         this.router.navigate(['settings']);
       }else{

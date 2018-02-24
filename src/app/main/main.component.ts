@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
   constructor(public router:Router) { }
 
   ngOnInit() {
-    this.router.navigate(['home'],{
+    this.router.navigate(['search'],{
       queryParams: {
         productId: '1',
         title: 'moon'

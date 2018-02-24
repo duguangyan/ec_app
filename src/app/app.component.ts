@@ -15,4 +15,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.router.navigate(['home']);
   }
+  public onDeactivate() {
+    window.scrollTo(0, 0);
+  }
 }

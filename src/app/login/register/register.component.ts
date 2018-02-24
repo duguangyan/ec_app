@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
+    //alert(1);
+    //window.location.reload();
   }
   // 返回上一级
   goback() {
@@ -152,8 +154,8 @@ export class RegisterComponent implements OnInit {
     }
     this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
       if(res.code>=0){
-        Cookie.save('userId',res.data.id);
-        Cookie.save('username',res.data.user_name);
+        Cookie.save('userId',res.data.id,7);
+        Cookie.save('username',res.data.user_name,7);
         this.totastService.success('登录成功');
         this.router.navigate(['home']);
       }else{
