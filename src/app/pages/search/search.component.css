@@ -13,7 +13,7 @@ select{
   padding: .1rem 0;
 }
 .select1,.select2{
-  font-size: .24rem;
+  font-size: .28rem;
   margin-top: .3rem;
   position: relative;
 }
@@ -22,16 +22,17 @@ select{
   -moz-appearance: none;
   -webkit-appearance: none;
   padding-left: .1rem;
-  height: .45rem;
+  height: .6rem;
   border: 1px solid #999;
   background-color: #fff;
+  font-size: .28rem !important;
 }
 
 .select1 :before{
   content: '';
   display: inline-block;
   position: absolute;
-  top: .15rem;
+  top: .25rem;
   right: .4rem;
   width: 0px;
   height: 0;
@@ -44,7 +45,7 @@ select{
   content: '';
   display: inline-block;
   position: absolute;
-  top: .25rem;
+  top: .35rem;
   right: 2.7rem;
   width: 0px;
   height: 0;
@@ -56,7 +57,7 @@ select{
   content: '';
   display: inline-block;
   position: absolute;
-  top: .25rem;
+  top: .35rem;
   right: .4rem;
   width: 0px;
   height: 0;
@@ -71,13 +72,13 @@ select{
   margin-right: .05rem;
 }
 .select1 select{
-  width: 4.5rem;
+  width: 4.3rem;
   border-radius:5px;
   outline:none;
   font-size: .24rem;
 }
 .select2 select{
-  width: 2.2rem;
+  width: 2.1rem;
   margin-top: .1rem;
   border-radius: 5px;
   outline: none;
@@ -86,7 +87,7 @@ select{
 }
 .price{
   margin-top: .4rem;
-  font-size: .24rem;
+  font-size: .28rem;
   position: relative;
 }
 .price span{
@@ -94,8 +95,8 @@ select{
 }
 
 .price input{
-  width: 1.8rem;
-  height: .4rem;
+  width: 1.6rem;
+  height: .6rem;
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #999;
@@ -105,27 +106,27 @@ select{
   -moz-appearance: none;
   -webkit-appearance: none;
   outline: none;
-  font-size: .24rem;
+  font-size: .28rem;
   margin-right: .24rem;
 }
 .price i{
   position: absolute;
-  top: 0;
+  top: .1rem;
   left: 3.25rem;
 }
 .describe{
-  font-size: .24rem;
+  font-size: .28rem;
   margin-top: .4rem;
 }
 .describe span{
   margin-right: .1rem;
   position: relative;
-  position: relative;
   top: -1rem;
+  margin-left: .5rem;
 }
 .describe textarea{
   height: 1rem;
-  width: 4.7rem;
+  width: 4.1rem;
   border-radius:5px ;
   border: 1px solid #999;
   appearance:none;
@@ -133,20 +134,19 @@ select{
   -webkit-appearance:none;
   outline:none;
   padding: .1rem;
-  font-size: .24rem;
 }
 
 .choose{
   margin-top: .2rem;
 }
 .choose h5{
-  font-size: .24rem;
+  font-size: .28rem;
   text-align: center;
   margin-bottom: .2rem;
 }
 .choose a{
   width: 25%;
-  font-size: .24rem;
+  font-size: .28rem;
 }
 .active{
   background-color: #d5393c!important;
@@ -227,15 +227,15 @@ select{
 }
 .nav2 span{
   padding-right: .2rem;
-  font-size: .24rem;
+  font-size: .28rem;
 }
 .nav2 input{
   background-color: #fff;
   border: 1px solid #999;
-  width: 4.3rem;
-  height: .4rem;
+  width: 4.1rem;
+  height: .6rem;
   border-radius: 5px;
-  font-size: .24rem;
+  font-size: .28rem;
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
@@ -243,7 +243,7 @@ select{
 }
 .nav3 p{
   text-align: center;
-  font-size: .24rem;
+  font-size: .28rem;
   color: #333;
   margin-top: .1rem;
 }

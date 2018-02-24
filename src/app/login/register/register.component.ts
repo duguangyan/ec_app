@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TotastService} from '../../service/totast.service';
 import {HttpService} from '../../service/http.service';
 import {Router} from '@angular/router';
+import {Cookie} from 'angular2-cookies';
 
 @Component({
   selector: 'app-register',
@@ -108,8 +109,10 @@ export class RegisterComponent implements OnInit {
     }
     this.httpService.post('/auth/member/register',params).subscribe((res:any)=>{
       if(res.code>=0){
-        this.totastService.success('注册成功');
-        this.router.navigate(['login']);
+        //this.totastService.success('注册成功');
+        console.log(res);
+        this.getUserMsg(res.data);
+        //this.router.navigate(['home']);
       }else{
         this.totastService.error('注册失败,请稍后再试');
       }
@@ -135,10 +138,27 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  //去协议页面
   // 去协议页面
   goLoginProtocol(event) {
     event.stopPropagation();
     this.router.navigate(['protocol']);
+  }
+
+  // 获取用户信息
+  getUserMsg(id) {
+    const params = {
+      token:'',
+      user_id:id
+    }
+    this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
+      if(res.code>=0){
+        Cookie.save('userId',res.data.id);
+        Cookie.save('username',res.data.user_name);
+        this.totastService.success('登录成功');
+        this.router.navigate(['home']);
+      }else{
+        this.totastService.error('登录失败');
+      }
+    })
   }
 }

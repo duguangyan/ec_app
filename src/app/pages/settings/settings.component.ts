@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class SettingsComponent implements OnInit {
   public HeaderImgUrl = '../../../assets/imgs/settings_header.png';
   public isLogin: boolean = false;
+  public hasLists: boolean = true;
   public userId: any;
   public lists: any;
   public username: string;
@@ -39,6 +40,9 @@ export class SettingsComponent implements OnInit {
       if(res.code>=0){
         console.log(res);
         this.lists = res.data.slice(0,5); // 取前5位数据
+        if(this.lists.length>0){
+          this.hasLists = true;
+        }
       }
     });
   }

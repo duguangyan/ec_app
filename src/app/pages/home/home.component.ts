@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpService} from '../../service/http.service';
 import {Cookie} from 'angular2-cookies';
 import {TotastService} from '../../service/totast.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -21,7 +21,7 @@
           <span>详情>></span>
         </li>
       </ul>
-      <div class="noDates" *ngIf="!isLogin">暂无数据</div>
+      <div class="noDates" *ngIf="!hasLists">暂无数据</div>
     </div>
   </div>
   <div class="settings_address">
@@ -50,5 +50,5 @@
   <div class="logout btn" (click)="logout()" *ngIf="isLogin">退出登录</div>
 </div>
 
-<app-footer></app-footer>
+<app-footer [select]="3"></app-footer>
 

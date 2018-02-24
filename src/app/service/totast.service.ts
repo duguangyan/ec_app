@@ -19,7 +19,7 @@ export class TotastService {
     layer.open({
       content: '<div><img src="../../assets/imgs/error_icon.png"><p>'+msg+'</p></div>'
       ,style: 'background-color:#333; color:#fff; border:none;text-align: center;opacity: .7;' //自定风格
-      ,time: 1
+      ,time: 3
     });
   }
 
@@ -27,7 +27,7 @@ export class TotastService {
     layer.open({
       content: '<div><img src="../../assets/imgs/waring_icon.png"><p>'+msg+'</p></div>'
       ,style: 'background-color:#333; color:#fff; border:none;text-align: center;opacity: .7;' //自定风格
-      ,time: 1
+      ,time: 3
     });
   }
 

@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
   public selectNumberOne: number;
   public samplingLinkman: string;
   public samplingNumber: string;
-  public samplingAddress: any;
+  public samplingAddress: any = '';
   public isLogin: boolean = false;
   constructor(public httpService: HttpService,
               public sanitizer: DomSanitizer,
@@ -296,7 +296,7 @@ export class SearchComponent implements OnInit {
           }else if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.samplingNumber))){
             this.totastService.waring('请填写联系电话');
             return false;
-          }else if(this.samplingAddress === ''){
+          }else if(this.samplingAddress === '' || this.samplingAddress === null ){
             this.totastService.waring('请填写取样地址');
             return false;
           }
