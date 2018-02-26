@@ -20,6 +20,34 @@
   left: -5px;
   top: 2px;
 }
+.home-notice img{
+  width: .3rem;
+  position: relative;
+  left: .1rem;
+  top: .07rem;
+}
+.home-notice{
+  text-align: center;
+  margin-top: .2rem;
+}
+.home-notice a{
+  /*text-decoration: underline;*/
+  font-size: .24rem;
+  color: #333;
+  display: inline-block;
+  position: relative;
+}
+.home-notice a:before{
+  content: '';
+  display: block;
+  width: 90%;
+  height: 1px;
+  position: absolute;
+  left: .08rem;
+  bottom: .03rem;
+  text-align: center;
+  background-color: #333;
+}
 .home_phone span{
   margin-left: .1rem;
   position: relative;
@@ -28,6 +56,9 @@
 .home_phone{
   text-align: center;
   margin-top: .2rem;
+}
+.home_phone a{
+  color: #d5393c;
 }
 .home-footer{
   margin-top: .7rem;
