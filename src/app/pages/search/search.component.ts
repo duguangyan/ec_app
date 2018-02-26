@@ -246,7 +246,7 @@ export class SearchComponent implements OnInit {
 
   //去支付页面
   goPayment(selectIndex) {
-        if(!(/^\d+(?:\.\d{1,4})?$/.test(this.minPrice))){
+        /*if(!(/^\d+(?:\.\d{1,4})?$/.test(this.minPrice))){
           this.totastService.waring('请输入正确的价格');
           return false;
         }else if(!(/^\d+(?:\.\d{1,4})?$/.test(this.maxPrice))){
@@ -255,7 +255,8 @@ export class SearchComponent implements OnInit {
         }else if(parseFloat(this.maxPrice) < parseFloat(this.minPrice)){
           this.totastService.waring('价格范围输入不正确');
           return false;
-        }else if(this.fieldDesc === '' || this.fieldDesc === undefined){
+        }else */
+        if(this.fieldDesc === '' || this.fieldDesc === undefined){
           this.totastService.waring('请填写描述');
           return false;
         }

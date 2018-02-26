@@ -28,7 +28,7 @@ select{
   font-size: .28rem !important;
 }
 
-.select1 :before{
+/*.select1 :before{
   content: '';
   display: inline-block;
   position: absolute;
@@ -39,8 +39,19 @@ select{
   border-width: .1rem .1rem;
   border-style: solid dashed dashed dashed;
   border-color: #000 #ffffff #ffffff #ffffff;
+}*/
+.select1 input,.price input{
+  background-color: #fff;
+  border: 1px solid #999;
+  width: 4.17rem;
+  height: .6rem;
+  border-radius: 5px;
+  font-size: .28rem;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin-left: 0;
 }
-
 .select2 :before{
   content: '';
   display: inline-block;
@@ -94,7 +105,7 @@ select{
   margin-right: .05rem;
 }
 
-.price input{
+/*.price input{
   width: 1.6rem;
   height: .6rem;
   background-color: #fff;
@@ -108,7 +119,7 @@ select{
   outline: none;
   font-size: .28rem;
   margin-right: .24rem;
-}
+}*/
 .price i{
   position: absolute;
   top: .1rem;
@@ -134,6 +145,7 @@ select{
   -webkit-appearance:none;
   outline:none;
   padding: .1rem;
+  font-size: .28rem;
 }
 
 .choose{
