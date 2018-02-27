@@ -86,7 +86,7 @@ export class OrderListComponent implements OnInit {
           //首次不执行
           if(!first){
             //do something
-            layer.msg(obj.curr,{time:500});
+            layer.msg(obj.curr,{time:300});
             that.getListDetail(obj.curr);
           }
         }

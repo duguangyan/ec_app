@@ -40,10 +40,10 @@
   content: '';
   display: block;
   width: 90%;
-  height: 1px;
+  height: .1px;
   position: absolute;
-  left: .08rem;
-  bottom: .03rem;
+  left: .09rem;
+  bottom: 0rem;
   text-align: center;
   background-color: #333;
 }

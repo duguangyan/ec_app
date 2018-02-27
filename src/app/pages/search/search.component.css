@@ -43,7 +43,7 @@ select{
 .select1 input,.price input{
   background-color: #fff;
   border: 1px solid #999;
-  width: 4.17rem;
+  width: 72%;
   height: .6rem;
   border-radius: 5px;
   font-size: .28rem;
@@ -138,7 +138,7 @@ select{
 }
 .describe textarea{
   height: 1rem;
-  width: 4.1rem;
+  width: 70.8%;
   border-radius:5px ;
   border: 1px solid #999;
   appearance:none;
@@ -245,7 +245,7 @@ select{
 .nav2 input{
   background-color: #fff;
   border: 1px solid #999;
-  width: 4.17rem;
+  width: 72%;
   height: .6rem;
   border-radius: 5px;
   font-size: .28rem;

@@ -68,7 +68,6 @@ export class SearchComponent implements OnInit {
     this.chooseBtnVal= ['图片找料','上门取样','寄送样品'];
     this.isBtnShow = 0;
     //this.getSelectVals2(0); // 获取select2数据
-    console.log(document.cookie);
   }
   //第一个下拉框
   // 第一个 select
