@@ -49,7 +49,7 @@ export class ForgetPasswordComponent implements OnInit {
       phone:this.phone,
       token:''
     }
-    this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams).subscribe(( res: any)=>{
+    /*this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams).subscribe(( res: any)=>{
       if(res.code>=0){
         this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams).subscribe(( ress: any)=>{
           if(ress.code >=0){
@@ -74,8 +74,23 @@ export class ForgetPasswordComponent implements OnInit {
     },(error)=>{
       this.totastService.error('网络慢，请稍后再试');
       return false
+    })*/
+    this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams,(res:any)=>{
+      this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams,(ress:any)=>{
+        this.totastService.success('短信发送成功');
+        this.codeId = ress.data;
+        this.isSends = !this.isSends;
+        if(this.sends > 0){
+          this.setIntervalTimer = setInterval(()=>{
+            this.sends--;
+            if(this.sends<1){
+              clearInterval(this.setIntervalTimer);
+              this.isSends = !this.isSends;
+            }
+          },1000);
+        }
+      })
     })
-
     this.cd.detectChanges();
     this.cd.markForCheck();
   }
@@ -106,13 +121,17 @@ export class ForgetPasswordComponent implements OnInit {
       sms_id:this.codeId,
       code:this.code
     }
-    this.httpService.post('/auth/member/psw/update',params).subscribe((res:any)=>{
+    /*this.httpService.post('/auth/member/psw/update',params).subscribe((res:any)=>{
       if(res.code>=0){
         this.totastService.success('重新设置成功');
         this.router.navigate(['login']);
       }else{
         this.totastService.error('网络慢，请稍后再试');
       }
+    })*/
+    this.httpService.post('/auth/member/psw/update',params,(res:any)=>{
+      this.totastService.success('重新设置成功');
+      this.router.navigate(['login']);
     })
   }
 }

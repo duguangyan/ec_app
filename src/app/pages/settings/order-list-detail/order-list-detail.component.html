@@ -5,14 +5,14 @@
   <div class="detail">
     <h5 class="title">订单详情</h5>
     <div class="form">
-      <p>货源类型:  <span> {{data.source_type_name}}</span></p>
-      <p>物料类型:  <span>{{data.cname}}</span></p>
-      <p>价格范围:  <span> {{data.min_price |  number:'1.2-2'}}</span> - <span style="margin-left: 0">{{data.max_price |  number:'1.2-2'}}</span>元</p>
-      <p>订单日期:  <span>{{data.created_at}}</span></p>
+      <!--<p>货源类型:  <span> {{data.source_type_name}}</span></p>-->
+      <p>物料名称:  <span>{{data.u_cname || '暂无'}}</span></p>
+      <p>价格范围:  <span> {{data.price_range || '暂无'}}</span></p>
+      <p>订单日期:  <span>{{data.created_at || '暂无'}}</span></p>
     </div>
     <div class="describe">
       <h5>描述</h5>
-      <div>{{data.field_desc}}</div>
+      <div>{{data.field_desc || '暂无'}}</div>
     </div>
     <div class="way">
       <h5>找料方式: <span>{{data.sampling_type_new || '暂无'}}</span> </h5>

@@ -21,11 +21,10 @@ export class OrderListDetailComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.id = queryParams.id;
       const params = {
-        user_id:Cookie.load('userId'),
-        id:this.id,
-        salesman_id:''
+        member_token:Cookie.load('token'),
+        id:this.id
       }
-      this.httpService.get('/find/demand/info',{params}).subscribe((res:any)=>{
+      /*this.httpService.get('/find/demand/info',{params}).subscribe((res:any)=>{
         console.log(res);
         if(res.code>=0) {
           this.data = res.data;
@@ -38,6 +37,17 @@ export class OrderListDetailComponent implements OnInit {
           }
         }else{
           this.totastService.waring('数据请求失败');
+        }
+      })*/
+
+      this.httpService.get('/find/demand/info',{params},(res:any)=>{
+        this.data = res.data;
+        if(this.data.sampling_type === 1){
+          this.data.sampling_type_new = '在线图片';
+        }else if(this.data.sampling_type === 2){
+          this.data.sampling_type_new = '上门取样';
+        }else if(this.data.sampling_type === 3){
+          this.data.sampling_type_new = '寄送样品';
         }
       })
     });

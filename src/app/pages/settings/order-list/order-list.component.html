@@ -13,9 +13,10 @@
   <div class="lists">
     <ul>
       <li *ngFor="let list of lists" (click)="goListDetail(list.id)"> <span>{{list.field_desc}}</span> <span>{{list.is_payed?'已付款':'未付款'}}</span>  <span>详情 >></span> <div style="clear: both"></div></li>
-      <li  *ngIf="lists.length>0" style="text-align: center">数据已加载完毕</li>
+      <!--<li  *ngIf="lists.length>0" style="text-align: center">数据已加载完毕</li>-->
     </ul>
   </div>
+  <div *ngIf="lists.length>0" id="appOrderListsPagination"></div>
   <div class="noList" *ngIf="lists.length<=0">
     <img src="../../../../assets/imgs/list_nodata.png">
     <p>没有相关订单哦</p>

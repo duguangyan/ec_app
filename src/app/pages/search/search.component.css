@@ -51,6 +51,7 @@ select{
   -moz-appearance: none;
   -webkit-appearance: none;
   margin-left: 0;
+  padding-left: .1rem;
 }
 .select2 :before{
   content: '';
@@ -252,6 +253,7 @@ select{
   -moz-appearance:none;
   -webkit-appearance:none;
   margin-left: .1rem;
+  padding-left: .1rem;
 }
 .nav3 p{
   text-align: center;

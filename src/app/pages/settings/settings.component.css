@@ -4,7 +4,6 @@
 }
 .setting span{
   position: relative;
-  top: -1rem;
 }
 .settings-more{
   height: .8rem;
@@ -17,7 +16,7 @@
 .settings-more img{
   width: .3rem;
   position: relative;
-  top: .04rem;
+  top: -0.04rem;
 }
 .settings-more strong img{
   width: .2rem;
@@ -72,7 +71,7 @@
   top: .25rem;
 }
 .settings_address .settings-more img:first-child{
-  top: .08rem;
+
 }
 .address{
   padding: .2rem;

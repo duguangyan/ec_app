@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       user_name:this.phone,
       token:''
     }
-    this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
+    /*this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
       if( res.code<0){
         this.isNumber = true;
         const params = {
@@ -74,8 +74,18 @@ export class RegisterComponent implements OnInit {
     },(error)=>{
       console.log(error);
       this.totastService.error('网络超时，请稍后！');
+    })*/
+    this.httpService.post('/auth/member/exist',codeParams,(res:any)=>{
+      this.isNumber = true;
+      const params = {
+        phone:this.phone
+      }
+      this.httpService.get('/auth/member/register/sms?phone='+ this.phone,params,(ress:any)=>{
+        this.totastService.success('短信发送成功');
+        this.codeFormService = ress.data;
+        this.sendsFn();
+      })
     })
-
   }
 
   // 注册
@@ -109,7 +119,7 @@ export class RegisterComponent implements OnInit {
       sms_id:this.codeFormService,
       code:Number.parseInt(this.code)
     }
-    this.httpService.post('/auth/member/register',params).subscribe((res:any)=>{
+    /*this.httpService.post('/auth/member/register',params).subscribe((res:any)=>{
       if(res.code>=0){
         //this.totastService.success('注册成功');
         console.log(res);
@@ -121,6 +131,9 @@ export class RegisterComponent implements OnInit {
     },(error)=>{
       console.log(error);
       this.totastService.error('注册失败,请稍后再试');
+    })*/
+    this.httpService.post('/auth/member/register',params,(res:any)=>{
+      this.getUserMsg(res.data);
     })
   }
 
@@ -147,12 +160,12 @@ export class RegisterComponent implements OnInit {
   }
 
   // 获取用户信息
-  getUserMsg(id) {
+  getUserMsg(token) {
     const params = {
       token:'',
-      user_id:id
+      member_token:token
     }
-    this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
+    /*this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
       if(res.code>=0){
         Cookie.save('userId',res.data.id,7);
         Cookie.save('username',res.data.user_name,7);
@@ -161,6 +174,12 @@ export class RegisterComponent implements OnInit {
       }else{
         this.totastService.error('登录失败');
       }
+    })*/
+    this.httpService.get('/auth/member/info?member_token='+token,params,(res:any)=>{
+      Cookie.save('userId',res.data.id,7);
+      Cookie.save('username',res.data.user_name,7);
+      this.totastService.success('登录成功');
+      this.router.navigate(['home']);
     })
   }
 }

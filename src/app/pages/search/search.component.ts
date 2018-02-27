@@ -43,6 +43,9 @@ export class SearchComponent implements OnInit {
   public samplingNumber: string;
   public samplingAddress: any = '';
   public isLogin: boolean = false;
+  public price: any;
+  public materialName: any;
+  public token: string;
   constructor(public httpService: HttpService,
               public sanitizer: DomSanitizer,
               public cd: ChangeDetectorRef,
@@ -51,7 +54,7 @@ export class SearchComponent implements OnInit {
     if(!Cookie.load('username')){
       this.isLogin = true;
     }else{
-      this.userId = Cookie.load('userId');
+      this.token = Cookie.load('token');
     }
   }
 
@@ -64,7 +67,7 @@ export class SearchComponent implements OnInit {
     this.seVal1 = this.selectVals1[0];
     this.chooseBtnVal= ['图片找料','上门取样','寄送样品'];
     this.isBtnShow = 0;
-    this.getSelectVals2(0); // 获取select2数据
+    //this.getSelectVals2(0); // 获取select2数据
     console.log(document.cookie);
   }
   //第一个下拉框
@@ -98,18 +101,10 @@ export class SearchComponent implements OnInit {
       reader1.onload = (e:any)=>{
         //就是base64
         this.img1 = e.target.result;
-        this.httpService.post('/find/image/upload',{user_id:this.userId,image:this.img1 }).subscribe((res:any)=>{
-          if(res.code>=0){
-            this.imageUrl1 = res.data.image_url;
-            this.imgId1 = res.data.image_id;
-            this.isImgUpload = true;
-            this.loading1 = false;
-          }else{
-            this.loading1 = false;
-            this.totastService.waring("网络慢，请稍等！");
-          }
-        },(error)=>{
-          this.totastService.waring("网络慢，请稍等！");
+        this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img1},(res:any)=>{
+          this.imageUrl1 = res.data.image_url;
+          this.imgId1 = res.data.image_id;
+          this.isImgUpload = true;
           this.loading1 = false;
         })
       }
@@ -128,20 +123,14 @@ export class SearchComponent implements OnInit {
       reader2.onload = (e:any)=>{
         // 就是base64
         this.img2 = e.target.result;
-        this.httpService.post('/find/image/upload',{user_id:this.userId,image:this.img2 }).subscribe((res:any)=>{
-          if(res.code>=0){
-            this.imageUrl2 = res.data.image_url;
-            this.imgId2 = res.data.image_id;
-            this.isImgUpload = true;
-            this.loading2 = false;
-          }else{
-            this.loading2 = false;
-            this.totastService.waring("网络慢，请稍等！");
-          }
-        },(error)=>{
+
+        this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img2},(res:any)=>{
+          this.imageUrl2 = res.data.image_url;
+          this.imgId2 = res.data.image_id;
+          this.isImgUpload = true;
           this.loading2 = false;
-          this.totastService.waring("网络慢，请稍等！");
         })
+
       }
       this.imageUrl2 = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file2));
     }else if(index===3){
@@ -158,20 +147,13 @@ export class SearchComponent implements OnInit {
       reader3.onload = (e:any)=>{
         // 就是base64
         this.img3 = e.target.result;
-        this.httpService.post('/find/image/upload',{user_id:this.userId,image:this.img3 }).subscribe((res:any)=>{
-          if(res.code>=0){
-            this.imageUrl3 = res.data.image_url;
-            this.imgId3 = res.data.image_id;
-            this.isImgUpload = true;
-            this.loading3 = false;
-          }else{
-            this.totastService.waring("网络慢，请稍等！");
-            this.loading3 = false;
-          }
-        },(error)=>{
-          this.totastService.waring("网络慢，请稍等！");
+        this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img3},(res:any)=>{
+          this.imageUrl3 = res.data.image_url;
+          this.imgId3 = res.data.image_id;
+          this.isImgUpload = true;
           this.loading3 = false;
         })
+
       }
       this.imageUrl3 = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file3));
     }
@@ -182,7 +164,7 @@ export class SearchComponent implements OnInit {
   }
 
   // 获取selectVals2的数据
-  getSelectVals2(id) {
+  /*getSelectVals2(id) {
     this.getSelectVal(id).subscribe((res:any)=>{
       console.log(res);
       if(res.code>=0){
@@ -202,10 +184,10 @@ export class SearchComponent implements OnInit {
 
     })
 
-  }
-  getSelectVal(id) {
+  }*/
+  /*getSelectVal(id) {
     return this.httpService.get('/item/category/get?parent_cid='+id,{});
-  }
+  }*/
 
   // 获取选项号码
   selectNumberTodo(){
@@ -218,7 +200,7 @@ export class SearchComponent implements OnInit {
   }
 
   // 第二个 select
-  select2Change(seVal2) {
+  /*select2Change(seVal2) {
     for(let i=0;this.selectVals2.length>i;i++){
       if(seVal2 === this.selectVals2[i].name){
         const index = this.selectVals2[i].id;
@@ -237,7 +219,7 @@ export class SearchComponent implements OnInit {
     }
     this.cd.markForCheck();
     this.cd.detectChanges();
-  }
+  }*/
   // 第三个 select
   select3Change() {
     //console.log(seVal3);
@@ -261,15 +243,18 @@ export class SearchComponent implements OnInit {
           return false;
         }
         this.params = {
-          user_id:Cookie.load('userId'),
-          source_type_name:this.seVal1,
-          cid:this.selectNumber,
+          member_token:Cookie.load('token'),
+          price_range:this.price,
+          u_cname:this.materialName,
+          field_desc:this.fieldDesc,
+          sampling_type:selectIndex
+          /*cid:this.selectNumber,
           sampling_type:selectIndex,
           min_price:this.minPrice,
           max_price:this.maxPrice,
           field_desc:this.fieldDesc,
           source_type:this.selectNumberOne,
-          cname:this.seVal2 +' '+this.seVal3
+          cname:this.seVal2 +' '+this.seVal3*/
         }
         if(selectIndex ===1){
           if(!this.isImgUpload){
@@ -279,17 +264,10 @@ export class SearchComponent implements OnInit {
           this.params.img1 = this.imgId1;
           this.params.img2 = this.imgId2;
           this.params.img3 = this.imgId3;
-          this.httpService.post('/find/demand/add',this.params).subscribe((res:any)=>{
-            console.log(res);
-            if(res.code>=0){
-              this.router.navigate(['payment'],{ queryParams : res.data });
-            }else{
-              this.totastService.waring('网络慢，请稍等!');
-            }
-          },(error)=>{
-            this.totastService.waring('网络慢，请稍等!');
-          })
 
+          this.httpService.post('/find/demand/add',this.params,(res:any)=>{
+            this.router.navigate(['payment'],{ queryParams : res.data });
+          })
         }else if(selectIndex ===2){
           if(this.samplingLinkman === ''){
             this.totastService.waring('请填写联系人');
@@ -304,30 +282,15 @@ export class SearchComponent implements OnInit {
           this.params.sampling_linkman = this.samplingLinkman;
           this.params.sampling_number = this.samplingNumber;
           this.params.sampling_address = this.samplingAddress;
-          this.httpService.post('/find/demand/add',this.params).subscribe((res:any)=>{
-            console.log(res);
-            if(res.code>=0){
-              this.router.navigate(['payment'],{ queryParams : res.data });
-            }else{
-              this.totastService.waring('网络慢，请稍等!');
-            }
-          },(error)=>{
-            this.totastService.waring('网络慢，请稍等!');
-          })
 
+          this.httpService.post('/find/demand/add',this.params,(res:any)=>{
+            this.router.navigate(['payment'],{ queryParams : res.data });
+          })
         }else if(selectIndex ===3){
 
-          this.httpService.post('/find/demand/add',this.params).subscribe((res:any)=>{
-            console.log(res);
-            if(res.code>=0){
-              this.router.navigate(['payment'],{ queryParams : res.data });
-            }else{
-              this.totastService.waring('网络慢，请稍等!');
-            }
-          },(error)=>{
-            this.totastService.waring('网络慢，请稍等!');
+          this.httpService.post('/find/demand/add',this.params,(res:any)=>{
+            this.router.navigate(['payment'],{ queryParams : res.data });
           })
-
         }
   }
 

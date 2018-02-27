@@ -8,7 +8,7 @@
 .payment-content img{
   width: .2rem;
   position: relative;
-  top: .03rem;
+  top: -0.03rem;
 }
 .payment-content{
   text-align: center;
@@ -46,7 +46,7 @@
 }
 .paydo div span:nth-child(2){
   position: relative;
-  top: -0.05rem;
+  top: 0.05rem;
   margin-left: .1rem;
 }
 .paydo div span{

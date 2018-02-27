@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(1);
+    //console.log(1);
   }
 
   search() {

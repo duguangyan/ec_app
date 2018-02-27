@@ -38,15 +38,17 @@ export class LoginComponent implements OnInit {
       user_name: this.phone,
       user_psw: this.passWord
     }
-    this.httpService.post('/auth/member/login',params).subscribe((res: any)=>{
+    /*this.httpService.post('/auth/member/login',params).subscribe((res: any)=>{
       if(res.code>=0) {
         console.log(res);
         this.getUserMsg(res.data);
       }else{
         this.totastService.error('用户名或密码错误');
       }
+    })*/
+    this.httpService.post('/auth/member/login',params,(res:any)=>{
+      this.getUserMsg(res.data);
     })
-
   }
 
   //显示隐藏密码
@@ -54,12 +56,12 @@ export class LoginComponent implements OnInit {
     this.isPwShow = !this.isPwShow;
   }
   // 获取用户信息
-  getUserMsg(id) {
+  getUserMsg(token) {
     const params = {
       token:'',
-      user_id:id
+      member_token:token
     }
-    this.httpService.get('/auth/member/info?user_id='+id,params).subscribe((res:any)=>{
+   /*this.httpService.get('/auth/member/info?member_token='+id,params).subscribe((res:any)=>{
       if(res.code>=0){
         Cookie.save('userId',res.data.id,7);
         Cookie.save('username',res.data.user_name,7);
@@ -68,7 +70,12 @@ export class LoginComponent implements OnInit {
       }else{
         this.totastService.error('请求失败');
       }
-    })
+    })*/
+    this.httpService.get('/auth/member/info?member_token='+token,params,(res:any)=>{
+      Cookie.save('token',token,7);
+      Cookie.save('username',res.data.user_name,7);
+      this.router.navigate(['settings']);
+    });
   }
 
   // 忘记密码
