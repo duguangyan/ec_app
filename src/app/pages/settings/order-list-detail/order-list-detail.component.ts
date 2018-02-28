@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Cookie} from 'angular2-cookies';
 import {HttpService} from '../../../service/http.service';
 import {TotastService} from '../../../service/totast.service';
-
+declare var $:any;
 @Component({
   selector: 'app-order-list-detail',
   templateUrl: './order-list-detail.component.html',
@@ -54,7 +54,11 @@ export class OrderListDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-
+/*
+    setTimeout(()=>{
+      alert($('.describe').height());
+      $('.describe').height($('.describe').height());
+    },500)*/
   }
   //返回上一页
   goback(){

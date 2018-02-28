@@ -34,7 +34,7 @@
 .describe div{
   width: 60%;
   margin-left: 20%;
-  height: 1.6rem;
+  min-height: 1.6rem;
   border-radius:5px ;
   border: 1px solid #e2e2e2;
   font-size: .24rem;
