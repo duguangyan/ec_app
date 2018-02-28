@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {TotastService} from '../../service/totast.service';
 import {HttpService} from '../../service/http.service';
 import {Router} from '@angular/router';
@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
   private isNumber: boolean = false;
   constructor(public totastService: TotastService,
               public httpService: HttpService,
-              public router: Router) { }
+              public router: Router,
+              public cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     //alert(1);
@@ -52,39 +53,25 @@ export class RegisterComponent implements OnInit {
       user_name:this.phone,
       token:''
     }
-    /*this.httpService.post('/auth/member/exist',codeParams).subscribe(( res: any)=>{
-      if( res.code<0){
-        this.isNumber = true;
-        const params = {
-          phone:this.phone
-        }
-        this.httpService.get('/auth/member/register/sms?phone='+ this.phone,params).subscribe(( ress: any)=>{
-          if( ress.code >=0){
-            this.totastService.success('短信发送成功');
-            this.codeFormService = ress.data;
-            this.sendsFn();
-            console.log(ress.data);
-          }else{
-            this.totastService.waring('网络忙，请稍后再试！');
-          }
-        })
-      } else{
-        this.totastService.error('你注册的手机号已存在！');
-      }
-    },(error)=>{
-      console.log(error);
-      this.totastService.error('网络超时，请稍后！');
-    })*/
+
     this.httpService.post('/auth/member/exist',codeParams,(res:any)=>{
       this.isNumber = true;
       const params = {
         phone:this.phone
       }
-      this.httpService.get('/auth/member/register/sms?phone='+ this.phone,params,(ress:any)=>{
-        this.totastService.success('短信发送成功');
-        this.codeFormService = ress.data;
-        this.sendsFn();
-      })
+      if(res.code>=0){
+        this.totastService.error('手机号已注册!');
+      }else{
+        this.httpService.get('/auth/member/register/sms?phone='+ this.phone,params,(ress:any)=>{
+          if(ress.code>=0){
+            this.sendsFn();
+            this.totastService.success('短信发送成功!');
+            this.codeFormService = ress.data;
+          }else{
+            this.totastService.waring('短信发送失败!');
+          }
+        })
+      }
     })
   }
 
@@ -94,8 +81,8 @@ export class RegisterComponent implements OnInit {
       this.totastService.waring('请输入正确的手机号');
       return false;
     }
-    if(!this.isNumber){
-      this.totastService.waring('请输入的手机号已注册');
+    if(!this.phone){
+      this.totastService.waring('请输入的手机号');
       return false;
     }
     if(this.isAgree){
@@ -103,7 +90,7 @@ export class RegisterComponent implements OnInit {
       return false
     }
     if(this.code === '' || this.code === undefined ){
-      this.totastService.waring('验证码错误');
+      this.totastService.waring('请填写正确的验证码');
       return false;
     }
 
@@ -133,7 +120,11 @@ export class RegisterComponent implements OnInit {
       this.totastService.error('注册失败,请稍后再试');
     })*/
     this.httpService.post('/auth/member/register',params,(res:any)=>{
-      this.getUserMsg(res.data);
+      if(res.code>=0){
+        this.getUserMsg(res.data);
+      }else{
+        this.totastService.error(res.msg);
+      }
     })
   }
 
@@ -143,7 +134,6 @@ export class RegisterComponent implements OnInit {
     if(this.sends > 0){
       this.setIntervalTimer = setInterval(()=>{
         this.sends--;
-        console.log();
         if(this.sends<1){
           clearInterval(this.setIntervalTimer);
           this.sends = 60;
@@ -176,10 +166,15 @@ export class RegisterComponent implements OnInit {
       }
     })*/
     this.httpService.get('/auth/member/info?member_token='+token,params,(res:any)=>{
-      Cookie.save('userId',res.data.id,7);
-      Cookie.save('username',res.data.user_name,7);
-      this.totastService.success('登录成功');
-      this.router.navigate(['home']);
+      if(res.code>=0){
+        Cookie.save('userId',res.data.id,7);
+        Cookie.save('username',res.data.user_name,7);
+        this.totastService.success('登录成功');
+        this.router.navigate(['home']);
+      }else{
+        this.totastService.error('登录失败!');
+      }
+
     })
   }
 }

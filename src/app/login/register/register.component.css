@@ -26,7 +26,7 @@
 }
 
 .from div:nth-child(2) input{
-  width: 60%;
+  width: 68%;
   border: none;
 }
 .forget-3-1,.forget-3-2{
@@ -75,18 +75,18 @@
 .icon img{
   width: 115%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -0.02rem;
+  left: .55rem;
 }
 .icon span{
   display: block;
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
   border: 1px solid #666;
   border-radius: 50%;
+  top: -0.02rem;
+  left: .55rem;
 }
 .submit{
   width: 80%;

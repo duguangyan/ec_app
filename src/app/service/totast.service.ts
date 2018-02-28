@@ -12,11 +12,11 @@ export class TotastService {
   }
 
   error(msg){
-    layer.msg(msg || '请求失败', {icon: 3,time: 1000});
+    layer.msg(msg || '请求失败', {icon: 2,time: 1000});
   }
 
   waring(msg){
-    layer.msg(msg || '请求失败', {icon: 2,time: 1000});
+    layer.msg(msg || '请求失败', {icon: 7,time: 1000});
   }
 
   confirm(msg,fun){

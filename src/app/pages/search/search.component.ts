@@ -92,7 +92,7 @@ export class SearchComponent implements OnInit {
       const file1 = event.currentTarget.files[0];
       //判断类型是不是图片
       if(!/image\/\w+/.test(file1.type)){
-        this.totastService.waring("请确保文件为图像类型");
+        this.totastService.waring("请确保文件为图像类型!");
         return false;
       }
       const reader1 = new FileReader();
@@ -101,10 +101,15 @@ export class SearchComponent implements OnInit {
         //就是base64
         this.img1 = e.target.result;
         this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img1},(res:any)=>{
-          this.imageUrl1 = res.data.image_url;
-          this.imgId1 = res.data.image_id;
-          this.isImgUpload = true;
-          this.loading1 = false;
+          if(res.code>=0){
+            this.imageUrl1 = res.data.image_url;
+            this.imgId1 = res.data.image_id;
+            this.isImgUpload = true;
+            this.loading1 = false;
+          }else{
+            this.totastService.waring("图片上传失败!");
+          }
+
         })
       }
       this.imageUrl1 = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file1));
@@ -113,7 +118,7 @@ export class SearchComponent implements OnInit {
       const file2 = event.currentTarget.files[0];
       //判断类型是不是图片
       if(!/image\/\w+/.test(file2.type)){
-        this.totastService.waring("请确保文件为图像类型");
+        this.totastService.waring("请确保文件为图像类型!");
         return false;
       }
       const reader2 = new FileReader();
@@ -124,12 +129,15 @@ export class SearchComponent implements OnInit {
         this.img2 = e.target.result;
 
         this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img2},(res:any)=>{
-          this.imageUrl2 = res.data.image_url;
-          this.imgId2 = res.data.image_id;
-          this.isImgUpload = true;
-          this.loading2 = false;
+          if(res.code>=0){
+            this.imageUrl2 = res.data.image_url;
+            this.imgId2 = res.data.image_id;
+            this.isImgUpload = true;
+            this.loading2 = false;
+          }else{
+            this.totastService.waring("图片上传失败!");
+          }
         })
-
       }
       this.imageUrl2 = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file2));
     }else if(index===3){
@@ -137,7 +145,7 @@ export class SearchComponent implements OnInit {
       const file3 = event.currentTarget.files[0];
       //判断类型是不是图片
       if(!/image\/\w+/.test(file3.type)){
-        this.totastService.waring("请确保文件为图像类型");
+        this.totastService.waring("请确保文件为图像类型!");
         return false;
       }
       const reader3 = new FileReader();
@@ -147,10 +155,15 @@ export class SearchComponent implements OnInit {
         // 就是base64
         this.img3 = e.target.result;
         this.httpService.post('/find/image/upload',{member_token:this.token,image:this.img3},(res:any)=>{
-          this.imageUrl3 = res.data.image_url;
-          this.imgId3 = res.data.image_id;
-          this.isImgUpload = true;
-          this.loading3 = false;
+          if(res.code>=0){
+            this.imageUrl3 = res.data.image_url;
+            this.imgId3 = res.data.image_id;
+            this.isImgUpload = true;
+            this.loading3 = false;
+          }else{
+            this.totastService.waring("图片上传失败!");
+          }
+
         })
 
       }
@@ -265,7 +278,12 @@ export class SearchComponent implements OnInit {
           this.params.img3 = this.imgId3;
 
           this.httpService.post('/find/demand/add',this.params,(res:any)=>{
-            this.router.navigate(['payment'],{ queryParams : res.data });
+            if(res.code>=0){
+              this.router.navigate(['payment'],{ queryParams : res.data });
+            }else{
+              this.totastService.waring('找料添加失败!');
+            }
+
           })
         }else if(selectIndex ===2){
           if(this.samplingLinkman === ''){
@@ -283,12 +301,21 @@ export class SearchComponent implements OnInit {
           this.params.sampling_address = this.samplingAddress;
 
           this.httpService.post('/find/demand/add',this.params,(res:any)=>{
-            this.router.navigate(['payment'],{ queryParams : res.data });
+            if(res.code>=0){
+              this.router.navigate(['payment'],{ queryParams : res.data });
+            }else{
+              this.totastService.waring('找料需求添加失败!');
+            }
+
           })
         }else if(selectIndex ===3){
 
           this.httpService.post('/find/demand/add',this.params,(res:any)=>{
-            this.router.navigate(['payment'],{ queryParams : res.data });
+            if(res.code>=0){
+              this.router.navigate(['payment'],{ queryParams : res.data });
+            }else{
+              this.totastService.waring('找料需求添加失败!');
+            }
           })
         }
   }

@@ -28,11 +28,11 @@ export class HttpService {
       if(res.code === -401){
         this.router.navigate(['login']);
         return;
-      }else if(res.code>=0){
-        callblack(res);
       }else{
-        this.totastService.waring(res.msg);
+        callblack(res);
       }
+    },(error)=>{
+      this.totastService.error('请求失败!');
     });
 
   }
@@ -43,11 +43,11 @@ export class HttpService {
       if(res.code === -401){
         this.router.navigate(['login']);
         return;
-      }else if(res.code>=0){
-        callblack(res);
       }else{
-        this.totastService.waring(res.msg);
+        callblack(res);
       }
+    },(error)=>{
+      this.totastService.error('请求失败!');
     });
   }
 }

@@ -47,7 +47,12 @@ export class LoginComponent implements OnInit {
       }
     })*/
     this.httpService.post('/auth/member/login',params,(res:any)=>{
-      this.getUserMsg(res.data);
+      if(res.code>=0){
+        this.getUserMsg(res.data);
+      }else{
+        this.totastService.waring(res.msg);
+      }
+
     })
   }
 
@@ -72,9 +77,14 @@ export class LoginComponent implements OnInit {
       }
     })*/
     this.httpService.get('/auth/member/info?member_token='+token,params,(res:any)=>{
-      Cookie.save('token',token,7);
-      Cookie.save('username',res.data.user_name,7);
-      this.router.navigate(['settings']);
+      if(res.code>=0){
+        Cookie.save('token',token,7);
+        Cookie.save('username',res.data.user_name,7);
+        this.router.navigate(['settings']);
+      }else{
+        this.totastService.waring(res.msg);
+      }
+
     });
   }
 

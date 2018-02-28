@@ -76,20 +76,29 @@ export class ForgetPasswordComponent implements OnInit {
       return false
     })*/
     this.httpService.get('/auth/member/exist?user_name='+this.phone,codeParams,(res:any)=>{
-      this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams,(ress:any)=>{
-        this.totastService.success('短信发送成功');
-        this.codeId = ress.data;
-        this.isSends = !this.isSends;
-        if(this.sends > 0){
-          this.setIntervalTimer = setInterval(()=>{
-            this.sends--;
-            if(this.sends<1){
-              clearInterval(this.setIntervalTimer);
-              this.isSends = !this.isSends;
+      if(res.code>=0){
+        this.httpService.get('/auth/member/psw/findsms?phone='+ this.phone,codeParams,(ress:any)=>{
+          if(res.code>=0){
+            this.totastService.success('短信发送成功');
+            this.codeId = ress.data;
+            this.isSends = !this.isSends;
+            if(this.sends > 0){
+              this.setIntervalTimer = setInterval(()=>{
+                this.sends--;
+                if(this.sends<1){
+                  clearInterval(this.setIntervalTimer);
+                  this.isSends = !this.isSends;
+                }
+              },1000);
             }
-          },1000);
-        }
-      })
+          }else{
+            this.totastService.waring('短信发送失败!');
+          }
+        })
+      }else{
+        this.totastService.waring('手机暂未注册!');
+      }
+
     })
     this.cd.detectChanges();
     this.cd.markForCheck();
@@ -130,8 +139,12 @@ export class ForgetPasswordComponent implements OnInit {
       }
     })*/
     this.httpService.post('/auth/member/psw/update',params,(res:any)=>{
-      this.totastService.success('重新设置成功');
-      this.router.navigate(['login']);
+      if(res.code>=0){
+        this.totastService.success('重新设置成功!');
+        this.router.navigate(['login']);
+      }else{
+        this.totastService.waring('重新设置失败!');
+      }
     })
   }
 }
