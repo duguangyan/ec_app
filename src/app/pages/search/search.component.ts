@@ -4,7 +4,7 @@ import {Cookie} from 'angular2-cookies';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {TotastService} from '../../service/totast.service';
-
+declare var $:any;
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -68,6 +68,63 @@ export class SearchComponent implements OnInit {
     this.chooseBtnVal= ['图片找料','上门取样','寄送样品'];
     this.isBtnShow = 0;
     //this.getSelectVals2(0); // 获取select2数据
+
+
+    $.fn.extend({
+
+      autoHeight: function(){
+
+        return this.each(function(){
+
+          var $this = $(this);
+
+          if( !$this.attr('_initAdjustHeight') ){
+
+            $this.attr('_initAdjustHeight', $this.outerHeight());
+
+          }
+
+          _adjustH(this).on('input', function(){
+
+            _adjustH(this);
+
+          });
+
+        });
+
+        /**
+
+         * 重置高度
+
+         * @param {Object} elem
+
+         */
+
+        function _adjustH(elem){
+
+          var $obj = $(elem);
+
+          return $obj.css({height: $obj.attr('_initAdjustHeight'), 'overflow-y': 'hidden'})
+
+            .height( elem.scrollHeight );
+
+        }
+
+      }
+
+    });
+
+    // 使用
+
+    $(function(){
+
+      $('textarea').autoHeight();
+
+    });
+
+
+
+
   }
   //第一个下拉框
   // 第一个 select

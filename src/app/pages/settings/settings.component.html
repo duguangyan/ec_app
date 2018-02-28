@@ -51,4 +51,4 @@
 </div>
 
 <app-footer [select]="3"></app-footer>
-
+<app-tops *ngIf="isLoginOut" [msg]="topsMsg" (topsCloseOutput)="topsClose()" (topsRightOutput)="topsRight()"></app-tops>

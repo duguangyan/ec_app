@@ -1,0 +1,52 @@
+.warp{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+}
+.warp-bg{
+  background-color: #000000;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9;
+}
+.warp-btn{
+  width: 80%;
+  margin-left: 10%;
+  height: 3.4rem;
+  background-color: #fff;
+  text-align: center;
+  position: absolute;
+  z-index: 99;
+  top: 40%;
+  border-radius: .1rem;
+  overflow: hidden;
+}
+.warp-btn h3,.warp-btn p{
+  text-align: left;
+  padding: .5rem 0 0 .4rem;
+}
+.warp-btn p{
+  top: 0.3rem;
+  padding: .3rem 0 0 .4rem;
+}
+.warp-txt{
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  position: absolute;
+  bottom: -.1rem;
+  border-top: 1px solid #e2e2e2;
+}
+.warp-txt div{
+  width: 50%;
+  float: left;
+}
+.warp-txt .right{
+  background-color: #d5393c;
+  color: #fff;
+}

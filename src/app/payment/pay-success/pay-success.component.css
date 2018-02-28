@@ -9,10 +9,9 @@
   width: .2rem;
 }
 .payment-content{
-  margin-left: 1rem;
   font-size: .24rem;
   color: #666;
-  text-align: left;
+  text-align: center;
   margin-top: .3rem;
 }
 .payment-content span{
@@ -40,7 +39,9 @@
 }
 .order{
   display: block;
-  width: 1.4rem;
+  width: 2rem;
+  height: .7rem;
+  line-height: .7rem;
   margin: 0 auto;
   margin-top: .5rem;
 }

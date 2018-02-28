@@ -129,11 +129,12 @@ select{
 .describe{
   font-size: .28rem;
   margin-top: .4rem;
+  position: relative;
 }
 .describe span{
   margin-right: .1rem;
-  position: relative;
-  top: -1rem;
+  position: absolute;
+  top: 0;
   margin-left: .5rem;
 }
 .describe textarea{
@@ -147,6 +148,7 @@ select{
   outline:none;
   padding: .1rem;
   font-size: .28rem;
+  margin-left: 1.43rem;
 }
 
 .choose{
@@ -270,5 +272,7 @@ select{
 }
 .submit p {
   width: 2.5rem;
+  height: .7rem;
+  line-height: .7rem;
 }
 

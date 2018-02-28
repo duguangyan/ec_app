@@ -108,7 +108,9 @@
 }
 .logout{
   display: block;
-  width: 2rem;
+  width: 80%;
+  height: .7rem;
+  line-height: .7rem;
   margin: 0 auto;
   margin-bottom: .5rem;
 }

@@ -3,15 +3,17 @@
   position: relative;
   left: 50%;
   margin-left: -1.5rem;
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 .payment-content img{
   width: .2rem;
 }
 .payment-content{
-  margin-left: 1.4rem;
+  margin-left: 1.8rem;
   font-size: .24rem;
   color: #666;
+  text-align: left;
+  margin-top: .3rem;
 }
 .payment-content span{
   margin-left: .1rem;
@@ -25,8 +27,11 @@
 .goPay{
   margin: 0 auto;
   display: block;
-  width: 1rem;
+  width: 2rem;
+  height: .7rem;
+  line-height: .7rem;
   margin-top: .8rem;
+  letter-spacing:3px;
 }
 .pay-footer-icon img{
   width: 80%;

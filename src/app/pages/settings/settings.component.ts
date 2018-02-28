@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import {Cookie} from 'angular2-cookies';
 import {HttpService} from '../../service/http.service';
 import {Router} from '@angular/router';
+declare  var layer:any;
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  public topsMsg:any = '确认退出登录吗?';
   public HeaderImgUrl = '../../../assets/imgs/settings_header.png';
   public isLogin: boolean = false;
   public hasLists: boolean = true;
   public userId: any;
   public lists: any;
   public username: string;
-  private token: string;
+  public token: string;
+  public isLoginOut:any = false;
   constructor(public httpService: HttpService,public router: Router) {
     if(Cookie.load('username')){
       this.token = Cookie.load('token');
@@ -72,12 +75,7 @@ export class SettingsComponent implements OnInit {
 
   //退出登录
   logout(){
-    Cookie.remove('username');
-    Cookie.remove('userId');
-    setTimeout(()=>{
-      this.router.navigate(['login']);
-    },500)
-
+    this.isLoginOut = true;
   }
 
   // 登录
@@ -85,4 +83,16 @@ export class SettingsComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  // 确认是否退出登录
+  topsClose(){
+    this.isLoginOut = false;
+  }
+  topsRight(){
+    Cookie.remove('token');
+    Cookie.remove('username');
+    Cookie.remove('userId');
+    setTimeout(()=>{
+      this.router.navigate(['login']);
+    },500)
+  }
 }

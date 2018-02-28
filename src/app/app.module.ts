@@ -25,6 +25,7 @@ import { OrderListDetailComponent } from './pages/settings/order-list-detail/ord
 import { OrderListComponent } from './pages/settings/order-list/order-list.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { PopupComponent } from './pages/common/dialog/popup/popup.component';
+import { TopsComponent } from './pages/common/dialog/tops/tops.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { PopupComponent } from './pages/common/dialog/popup/popup.component';
     OrderListDetailComponent,
     OrderListComponent,
     PopupComponent,
+    TopsComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ export class HttpService {
               public totastService: TotastService) {
     /*this.API_ENDPOINT = 'http://120.77.209.176:38000';*/
     this.API_ENDPOINT = 'https://api.yidap.com';
+    /*this.API_ENDPOINT = 'https://120.77.209.176:31111';*/
   }
 
   //是否登录
